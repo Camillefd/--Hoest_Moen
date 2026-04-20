@@ -1,0 +1,50 @@
+/*************** Reset *********************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--color-background);
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/************** Farver ******************/
+:root {
+  --color-accent: #1f6c48;
+  --color-background: #ecf3d7;
+  --color-text: #3b2b2a;
+  --color-lightgreen: #aad991;
+}
+
+/************* Fonts ***************/
+h1 {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: var(--color-lightgreen);
+}
+
+h2 {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: var(--color-text);
+}
+
+h3 {
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: var(--color-text);
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: Regular;
+  font-style: normal;
+  color: var(--color-text);
+}
