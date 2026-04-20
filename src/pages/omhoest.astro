@@ -1,0 +1,37 @@
+---
+import "../styles/Global.css"
+import Layout from '../layouts/Layout.astro';
+import Kunstnere from "../components/Cards.astro";
+
+const url =`${import.meta.env.SUPABASE_URL}/rest/v1/Kunstnere?select=*`;
+const apiKey = import.meta.env.SUPABASE_PUBLISHABLE_KEY;
+
+const options = {
+  headers: {
+    apikey: apiKey,
+  },
+};
+
+const data = await fetch(url, options)
+  .then((res) => res.json());
+
+console.log(data);
+---
+
+<Layout>
+	  <h1>Hvad sker der i år?</h1>
+
+  {data.map((kunstnere: any) => <Kunstnere kunstnere={kunstnere} />)}
+</Layout>
+
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Bla bla bla</title>
+  </head>
+
+  <body>
+    </body>
