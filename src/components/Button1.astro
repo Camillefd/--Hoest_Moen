@@ -1,0 +1,40 @@
+---
+const { text, href } = Astro.props;
+---
+
+<!-- Knap 1 med styling -->
+<a href={href} class="btn1">
+  {text}
+</a>
+
+<style>
+  .btn1 {
+     display: flex;
+    align-items: center;
+    justify-content: center;
+     width: 150px;
+    height: 150px;
+    border-radius: 50%;  
+    margin: 10px;
+    background-color: var(--color-lightgreen);
+    color:var(--color-text);
+    text-decoration: none;
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+  }
+
+  .btn1:hover {
+         display: flex;
+    align-items: center;
+    justify-content: center;
+     width: 200px;
+    height: 200px;
+    border-radius: 50%;  
+    margin: 5px;
+    background-color: var(--color-text);
+    color:var(--color-background);
+    text-decoration: none;
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+  }
+</style>
