@@ -2,7 +2,8 @@
 const { kunstnere } = Astro.props;
 ---
 
-<article>
+<article class="card_component">
+  <img src={kunstnere.Billede} alt="" />
   <h2>{kunstnere.Navn}</h2>
-  <p>Teaser: {kunstnere.Kortbeskrivelse}</p>
+  <p>{kunstnere.Langbeskrivelse}</p>
 </article>
