@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: var(--color-background);
 }
 
 img {
@@ -18,6 +17,10 @@ img {
   --color-background: #ecf3d7;
   --color-text: #3b2b2a;
   --color-lightgreen: #aad991;
+}
+
+body {
+  background-color: var(--color-background);
 }
 
 /************* Fonts ***************/
