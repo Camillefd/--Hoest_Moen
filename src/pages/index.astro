@@ -1,5 +1,7 @@
 ---
 import "../styles/Global.css"
+import Button1 from '../components/Button1.astro';
+import Button2 from '../components/Button2.astro';
 import Layout from '../layouts/Layout.astro';
 import Kunstnere from "../components/Cards.astro";
 
@@ -19,7 +21,10 @@ console.log(data);
 ---
 
 <Layout>
-	  <h1>Hvad sker der i år?</h1>
+	      <Button1 text="Read more" href="/omhoest" />
+        <Button2 text="Læs mere" href="/omhoest" />
+
+  <h1>Hvad sker der i år?</h1>
 
   {data.map((kunstnere: any) => <Kunstnere kunstnere={kunstnere} />)}
 </Layout>

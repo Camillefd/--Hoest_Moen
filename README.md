@@ -27,6 +27,7 @@ Hoest_Moen/
 │   │   ├── billeder
 ├── src/
 │   ├── compopnents/
+│   │   ├── Buttons.astro
 │   │   ├──Cards.astro
 │   ├── layouts/
 │   │   ├── Layout.astro
