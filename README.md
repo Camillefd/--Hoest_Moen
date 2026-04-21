@@ -24,7 +24,8 @@ Løsningen er udviklet med Atro, css og JavaScript.
 Hoest_Moen/
 ├── public/
 │   │   ├── favicon
-│   │   ├── billeder
+│   │   ├── img
+│   │   ├── video
 ├── src/
 │   ├── compopnents/
 │   │   ├── Buttons.astro
