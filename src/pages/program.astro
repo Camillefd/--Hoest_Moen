@@ -1,11 +1,16 @@
 ---
-import "../styles/Global.css"
-import Button1 from '../components/Button1.astro';
-import Button2 from '../components/Button2.astro';
-import Layout from '../layouts/Layout.astro';
+const days = [
+  { title: "Fredag 28/04", content1: "Indhold for fredag..." },
+  { title: "Lørdag 29/04", content2: "Indhold for lørdag..." },
+];
+
+import "../styles/Global.css";
+import Button1 from "../components/Button1.astro";
+import Button2 from "../components/Button2.astro";
+import Layout from "../layouts/Layout.astro";
 import Kunstnere from "../components/Cards.astro";
 
-const url =`${import.meta.env.SUPABASE_URL}/rest/v1/Kunstnere?select=*`;
+const url = `${import.meta.env.SUPABASE_URL}/rest/v1/Kunstnere?select=*`;
 const apiKey = import.meta.env.SUPABASE_PUBLISHABLE_KEY;
 
 const options = {
@@ -14,15 +19,88 @@ const options = {
   },
 };
 
-const data = await fetch(url, options)
-  .then((res) => res.json());
+const data = await fetch(url, options).then((res) => res.json());
 
 console.log(data);
 ---
 
 <Layout>
-	  <h1>Hvad sker der i år?</h1>
+  <img class="HeroProgram" src="img/BabyInVain.webp" alt="Herobillede på programside" />
+  <div class="program">
+    <h1 class="title">Program for 2026</h1>
+
+    {
+      days.map((day, index) => (
+        <div class="item" id={`item-${index}`}>
+          <button onclick={`toggle(${index})`}>
+            {day.title}
+            <span>⌄</span>
+          </button>
+          <div class="content">{day.content}</div>
+        </div>
+      ))
+    }
+  </div>
+
+  <script>
+    function toggle(index) {
+      const el = document.getElementById(`item-${index}`);
+      el.classList.toggle("open");
+    }
+  </script>
 
   {data.map((kunstnere: any) => <Kunstnere kunstnere={kunstnere} />)}
-</Layout>
 
+  <style>
+    .program {
+      margin: 0 auto;
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      font-style: normal;
+      color: var(--color-text);
+    }
+
+    .title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .item {
+      border-top: 1.5px solid var(--color-text);
+    }
+
+    button {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1rem;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .content {
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .item.open .content {
+      display: block;
+    }
+
+    .HeroProgram img {
+      margin-bottom: 10px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+  </style>
+</Layout>
