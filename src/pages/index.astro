@@ -3,9 +3,9 @@ import "../styles/Global.css"
 import Button1 from '../components/Button1.astro';
 import Button2 from '../components/Button2.astro';
 import Layout from '../layouts/Layout.astro';
-import Kunstnere from "../components/Cards.astro";
+import Kunstnere from "../components/CardsForside.astro";
 
-const url =`${import.meta.env.SUPABASE_URL}/rest/v1/Kunstnere?select=*`;
+const url =`${import.meta.env.SUPABASE_URL}/rest/v1/Kunstnere?select=*&limit=3`;
 const apiKey = import.meta.env.SUPABASE_PUBLISHABLE_KEY;
 
 const options = {
@@ -17,15 +17,56 @@ const options = {
 const data = await fetch(url, options)
   .then((res) => res.json());
 
+const first3 = data.slice(0, 3);
+
 console.log(data);
 ---
 
 <Layout>
-	      <Button1 text="Read more" href="/omhoest" />
-        <Button2 text="Læs mere" href="/omhoest" />
+  <!-- Herovideo -->
+<video
+  autoplay
+  muted
+  loop
+  playsinline
+  width="100%"
+>
+  <source src="/img/Hero.webm" type="video/webm" />
+</video>
 
-  <h1>Hvad sker der i år?</h1>
+ <h1>28/08</h1>
+ <h1>29/08</h1>
+ <!-- 2. sektion -->
 
-  {data.map((kunstnere: any) => <Kunstnere kunstnere={kunstnere} />)}
+ <h2>Hvad sker der i år?</h2>
+
+ <div class="Info">
+ {first3.map((kunstnere: any, index: number) => (
+    <Button1 text={`${kunstnere.Navn}`} href="" />
+    <img src={`/img/${kunstnere.Billede}`} alt={kunstnere.Navn} />
+    <Kunstnere kunstnere={kunstnere} />
+))}
+</div>
+
+ <div class="Info2">
+    <Button1 text="Langbord" href="" />
+    <img src="/img/langbord.webp" alt="Langbordsmiddag" />
+    <h2>Langbordsmiddag</h2>
+    <p>Høst handler også om mad, fællesskab og lokale råvarer. Lørdagens fællesmiddag er inkluderet i billetten, hvor alle samles om et sæsonbaseret måltid – skabt med fokus på kvalitet, nærhed og minimal spild.</p>
+</div>
+
+
+<!-- 3. sektion -->
+
+<h2>Kort over pladsen</h2>
+<p>Høst Møn er tilbage! Hold din øl! Hent din pung! I sidste weekend af august holder vi Høst Møn på Masnedøfortet. Det er lige uden for Vordingborg, så transporten er lettere, bølgerne er højere, og udsigten er stadigvæk Falster.</p>
+
+<img src="/img/map.webp" alt="map">
+
 </Layout>
 
+<style>
+    footer ul {
+   background: linear-gradient(180deg,rgba(170, 217, 145, 0) 0%, rgba(236, 243, 215, 1) 50%, rgba(236, 243, 215, 1) 100%);
+  }
+</style>
