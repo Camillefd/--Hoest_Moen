@@ -1,10 +1,11 @@
 ---
 const { kunstnere } = Astro.props;
+const reverse = kunstnere.reverse ?? false;
 import Button2 from "../components/Button2.astro";
 ---
 
 <!-- <img src="/img/Majke.webp" alt="majke" /> -->
-<article class="card_component" class:list={[kunstnere.reverse ? "reverse" : ""]}>
+<article class:list={["card_component", { reverse }]}>
   <div class="card_image">
     <img src={`/img/${kunstnere.Billede}`} alt={kunstnere.Navn} />
   </div>
@@ -25,18 +26,19 @@ import Button2 from "../components/Button2.astro";
   }
 
   /* Hvert andet card vender billedet til højre */
-  .card_component.reverse {
-    direction: rtl;
+  .card_component.reverse .card_image {
+    order: 2;
   }
-  .card_component.reverse > * {
-    direction: ltr;
+  .card_component.reverse .card_image > * {
+    order: 1;
   }
 
   .card_image img {
-    width: 100%;
-    aspect-ratio: 3 / 4;
+    width: 75%;
+    aspect-ratio: 3 / 3;
     object-fit: cover;
     display: block;
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.25);
   }
 
   .card_content {
@@ -55,9 +57,5 @@ import Button2 from "../components/Button2.astro";
     font-size: 1rem;
     line-height: 1.6;
     margin: 0;
-  }
-
-  .læs-mere:hover {
-    background-color: #333;
   }
 </style>
