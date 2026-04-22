@@ -28,7 +28,8 @@ Hoest_Moen/
 │   │   ├── video
 ├── src/
 │   ├── compopnents/
-│   │   ├── Buttons.astro
+│   │   ├── Buttons1.astro
+│   │   ├── Buttons2.astro
 │   │   ├──Cards.astro
 │   │   ├──CardsForside.astro
 │   ├── layouts/
@@ -99,8 +100,6 @@ Vi har sørget for at navngive filer, classes, variabler, og funktioner så over
 
 #### Eksempler på funktioner:
 
-#### camelCase:
-
 #### Kommentarer
 
 #### Eksempler på kommentarer:
@@ -120,13 +119,13 @@ forside-done
 variabler1
 sidste_rettelser-done
 
-## udfordringer undervejs
+## Udfordringer undervejs
 
 En udfording kunne være hvis et eller flere gruppemedlemmer glemmer at branche og arbejder i main, der opstår der probmelber.
 
 En anden udfording kunne også være en merge-konflikt - altså flere arbejder i den samme fil. Dog er det nemt at rette ved bare at kigge i GitHub, så fortæller den hvad problemet er.
 
-## gruppemedlemmer
+## Gruppemedlemmer
 
 - Sara
 - Isabella
