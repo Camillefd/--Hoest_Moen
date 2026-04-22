@@ -1,9 +1,8 @@
 ---
-const { text, href } = Astro.props;
+const { text, href, index } = Astro.props;
 ---
 
-<!-- Knap 1 med styling -->
-<a href={href} class="btn1">
+<a href={href} class="btn1" data-index={index}>
   {text}
 </a>
 
