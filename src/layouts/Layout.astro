@@ -7,9 +7,9 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex">
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta name="robots" content="noindex" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
   <body>
@@ -55,100 +55,97 @@ const { title } = Astro.props;
 
 <!-- Header styling -->
 <style>
- header a {
-   font-family: "Syne", sans-serif;
-   font-weight: 700;
-   font-size: larger;
-   text-decoration: none;
-   color: var(--color-accent);
-   padding: 0.4rem 0.6rem;
+  header a {
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    font-size: larger;
+    text-decoration: none;
+    color: var(--color-accent);
+    padding: 0.4rem 0.6rem;
   }
 
-.menu {
-display: flex;
-justify-content: center;
- margin: 2rem;
- gap: 10rem;
+  .menu {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+    gap: 10rem;
   }
 
   .menu li a:hover {
-font-size:x-large;
-text-decoration: underline;
-padding: 0.4rem 0.6rem;
+    font-size: x-large;
+    text-decoration: underline;
+    padding: 0.4rem 0.6rem;
   }
 
   .menu li {
-   list-style: none;
+    list-style: none;
   }
 
-.dropdown {
-  position: relative;
-}
+  .dropdown {
+    position: relative;
+  }
 
-/* Gem dropdown ved default */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  left: 0;
-  background-color: var(--color-lightgreen);
-  min-width: 180px;
-  padding: 0.4rem 0.6rem;
-  z-index: 100;
-}
+  /* Gem dropdown ved default */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: var(--color-lightgreen);
+    min-width: 180px;
+    padding: 0.4rem 0.6rem;
+    z-index: 100;
+  }
 
-.dropdown-menu li a {
-  display: block;
-  padding: 0.4rem 0.6rem;
-  text-decoration: none;
-  color: var(--color-accent);
-  font-weight: 700;
-  white-space: nowrap;
-}
+  .dropdown-menu li a {
+    display: block;
+    padding: 0.4rem 0.6rem;
+    text-decoration: none;
+    color: var(--color-accent);
+    font-weight: 700;
+    white-space: nowrap;
+  }
 
-.dropdown-menu li a:hover {
-font-size:x-large;
-text-decoration: underline;
-}
+  .dropdown-menu li a:hover {
+    font-size: x-large;
+    text-decoration: underline;
+  }
 
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
 
-.dropdown:hover > a {
-  background-color: var(--color-lightgreen);
-}
+  .dropdown:hover > a {
+    background-color: var(--color-lightgreen);
+  }
 
-.dropdown > a {
-   padding: 0.4rem 0.6rem;
-  display: inline-block;
-}
-
+  .dropdown > a {
+    padding: 0.4rem 0.6rem;
+    display: inline-block;
+  }
 </style>
 
 <!-- Footer styling -->
 <style>
   footer li {
-   font-family: "Syne", sans-serif;
-   font-weight: 700;
-   text-decoration: none;
-   color: var(--color-text);
-   padding: 0.4rem 0.6rem;
+    font-family: "Syne", sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 0.4rem 0.6rem;
   }
 
   footer a {
-text-decoration: none;
- color: var(--color-text);
+    text-decoration: none;
+    color: var(--color-text);
   }
 
   footer ul {
     display: flex;
-justify-content: center;
-list-style: none;
-padding: 50px;
-padding-top: 200px;
-gap: 25rem;
-background: linear-gradient(180deg,rgba(236, 243, 215, 0) 0%, rgba(170, 217, 145, 1) 50%, rgba(170, 217, 145, 1) 100%);
+    justify-content: center;
+    list-style: none;
+    padding: 50px;
+    padding-top: 200px;
+    gap: 25rem;
+    background: linear-gradient(180deg, rgba(236, 243, 215, 0) 0%, rgba(170, 217, 145, 1) 50%, rgba(170, 217, 145, 1) 100%);
   }
-  
 </style>
-

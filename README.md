@@ -30,6 +30,7 @@ Hoest_Moen/
 │   ├── compopnents/
 │   │   ├── Buttons.astro
 │   │   ├──Cards.astro
+│   │   ├──CardsForside.astro
 │   ├── layouts/
 │   │   ├── Layout.astro
 │   ├── pages/
