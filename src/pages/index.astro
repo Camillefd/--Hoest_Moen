@@ -22,51 +22,166 @@ const first3 = data.slice(0, 3);
 console.log(data);
 ---
 
-<Layout>
+<Layout footerClass="footer-index">
   <!-- Herovideo -->
-<video
-  autoplay
-  muted
-  loop
-  playsinline
-  width="100%"
->
-  <source src="/img/Hero.webm" type="video/webm" />
-</video>
+  <div class="hero">
+    <video autoplay muted loop playsinline>
+      <source src="/img/Hero.webm" type="video/webm" />
+    </video>
+    <div class="hero-text">
+      <h1>28/08</h1>
+      <h1>29/08</h1>
+    </div>
+  </div>
 
- <h1>28/08</h1>
- <h1>29/08</h1>
  <!-- 2. sektion -->
+<div class="Info-container">
+  <h2>Hvad sker der i år?</h2>
 
- <h2>Hvad sker der i år?</h2>
+  <div class="Info">
+    {first3.map((kunstnere: any, index: number) => (
+      <div class={`card-wrapper card-${index}`}>
+        <Button1 text={kunstnere.Navn} href="" index={index} />
+      </div>
+    ))}
 
- <div class="Info">
- {first3.map((kunstnere: any, index: number) => (
-    <Button1 text={`${kunstnere.Navn}`} href="" />
-    <img src={`/img/${kunstnere.Billede}`} alt={kunstnere.Navn} />
-    <Kunstnere kunstnere={kunstnere} />
-))}
-</div>
+    <div class="card-wrapper card-3">
+      <Button1 text="Langbord" href="" index="langbord" />
+    </div>
+  </div>
+  
+  {first3.map((kunstnere: any, index: number) => (
+    <div class="card-content" id={`card-${index}`} style="display: none;">
+      <img src={`/img/${kunstnere.Billede}`} alt={kunstnere.Navn} />
+      <Kunstnere kunstnere={kunstnere} />
+    </div>
+  ))}
 
- <div class="Info2">
-    <Button1 text="Langbord" href="" />
+  <div class="card-content" id="card-langbord" style="display: none;">
     <img src="/img/langbord.webp" alt="Langbordsmiddag" />
-    <h2>Langbordsmiddag</h2>
+    <h3>Langbordsmiddag</h3>
     <p>Høst handler også om mad, fællesskab og lokale råvarer. Lørdagens fællesmiddag er inkluderet i billetten, hvor alle samles om et sæsonbaseret måltid – skabt med fokus på kvalitet, nærhed og minimal spild.</p>
+  </div>
 </div>
 
 
 <!-- 3. sektion -->
 
+<div class="map">
 <h2>Kort over pladsen</h2>
 <p>Høst Møn er tilbage! Hold din øl! Hent din pung! I sidste weekend af august holder vi Høst Møn på Masnedøfortet. Det er lige uden for Vordingborg, så transporten er lettere, bølgerne er højere, og udsigten er stadigvæk Falster.</p>
 
 <img src="/img/map.webp" alt="map">
+</div>
 
 </Layout>
 
 <style>
-    footer ul {
-   background: linear-gradient(180deg,rgba(170, 217, 145, 0) 0%, rgba(236, 243, 215, 1) 50%, rgba(236, 243, 215, 1) 100%);
-  }
+   /* Herovideo style */
+    .hero {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  margin-top: 10rem;
+  overflow: hidden;
+}
+
+.hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 3rem;
+  right: 5rem;
+  font-size: 2.5rem;
+}
+
+ /* 2. sektion style */
+
+@media (min-width: 840px) {
+.Info {
+  display: block;
+  padding: 3rem;
+  padding-left: 70rem;
+  padding-right: 20rem;
+}
+
+.card-0 { justify-self: end; margin-top: 0rem; }
+.card-1 { justify-self: start; margin-top: 1rem; }
+.card-2 { justify-self: end; margin-top: 1rem; }
+.card-3 { justify-self: start; margin-top: 1rem; }
+
+h2{
+  margin: 3.9rem;
+  font-size: 2rem;
+}
+}
+.Info-container {
+  position: relative;
+}
+
+.card-content {
+  position: absolute;
+  width: 100%;
+  background-color: var(--color-lightgreen);
+  padding: 3rem;
+  z-index: 5;
+  justify-items: center;
+}
+
+.card-content img {
+  width: 25rem;
+  height: 20rem;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1.5rem auto;
+}
+
+.card-content h3 {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.card-content p {
+  max-width: 25rem;
+}
+/* 3. sektion style */
+.map {
+  background-color: var(--color-lightgreen);
+  padding: 10px;
+}
+
+.map img {
+  width: 60rem;
+  justify-self: center;
+}
+
+.map p {
+  margin-left: 60px;
+}
+
 </style>
+
+<script>
+/* 2. sektion js */
+  const buttons = document.querySelectorAll(".btn1");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const index = btn.getAttribute("data-index");
+      const card = document.getElementById(`card-${index}`);
+
+  if (!card) return;
+
+      if (card.style.display === "none") {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+</script>
