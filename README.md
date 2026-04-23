@@ -90,17 +90,16 @@ Vi gør brug af kommentarer til vores primæere elementer, som beskriver kodens 
 
 Vi har sørget for at navngive filer, classes, variabler, og funktioner så overskueligt og beskrivende som muligt.
 
-#### Eksempler på variabler:
-
-#### Eksempler på funktioner:
-
 #### Kommentarer
 
 #### Eksempler på kommentarer:
 
+/_ Gem dropdown ved default _/
+/_ Hvert andet card vender billedet til højre _/
+
 ## Komponenter i denne opgave
 
-## Formular og validering:
+Cards, vores knapper, header og footer.
 
 ## Branches og hvordan de bruges
 
