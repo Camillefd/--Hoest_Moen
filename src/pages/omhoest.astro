@@ -1,27 +1,215 @@
 ---
 import "../styles/Global.css"
-import Button1 from '../components/Button1.astro';
-import Button2 from '../components/Button2.astro';
 import Layout from '../layouts/Layout.astro';
-import Kunstnere from "../components/Cards.astro";
-
-const url =`${import.meta.env.SUPABASE_URL}/rest/v1/Kunstnere?select=*`;
-const apiKey = import.meta.env.SUPABASE_PUBLISHABLE_KEY;
-
-const options = {
-  headers: {
-    apikey: apiKey,
-  },
-};
-
-const data = await fetch(url, options)
-  .then((res) => res.json());
-
-console.log(data);
 ---
 
-<Layout>
-	  <h1>Hvad sker der i år?</h1>
+ <!-- body sektion -->
+ 
+ <Layout>
+  
+<section class="om-host">
+  <div class="hero-title">
+    <h2>
+      En festival for<br />
+      <span>ALLE</span>
+    </h2>
+  </div>
 
-  {data.map((kunstnere: any) => <Kunstnere kunstnere={kunstnere} />)}
-</Layout>
+  <div class="info">
+    <div class="textleft">
+      <p><strong>Billetterne er i salg nu!</strong></p>
+      <p>
+        Verden er blevet dyrere – også æstetikken, alkoholen og alle de små
+        gebyrer.
+      </p>
+      <p>
+        Men én ting ændrer sig ikke: vores ambition om at skabe en oplevelse,
+        der er det hele værd.
+      </p>
+      <p>
+        Vi lover kvalitet, nærvær og øjeblikke, du ikke har lyst til at tage
+        hjem fra.
+      </p>
+      <p>Næsten penge-tilbage-garanti på lykke.</p>
+      <p><strong>Navnet?</strong> Det finder vi ud af.</p>
+      <p>
+        Indtil videre holder vi fast – for du kan tage festivalen ud af Møn,
+        men aldrig Møn ud af festivalen.
+      </p>
+    </div>
+
+    <div class="imgright">
+      <img src="/img/host1.webp" alt="To børn på festival" />
+    </div>
+
+    <div class="imgleft">
+      <img src="/img/host2.webp" alt="Festivalgæster sidder sammen" />
+    </div>
+
+    <div class="textright">
+      <p><strong>Det er den syvende Høst Møn på ni år,</strong></p>
+      <p>
+        for hverken verdensomspændende pandemier eller lokalt huserende
+        markvibber kan holde os fra at skabe skønne, stejende fællesskaber på
+        sydlige breddegrader med alle jer.
+      </p>
+    </div>
+
+    <div class="textleft">
+      <p>
+        Høst Møn er <strong>en musikfestival for folk, der elsker begge dele:</strong>
+        musik og festival.
+      </p>
+      <p>Vi er til for dem, der gerne vil lytte til musikken.</p>
+      <p>
+        Vi booker bredt fra dit yndlingsband til de små spillesteders navsede
+        juveler.
+      </p>
+    </div>
+
+    <div class="imgright">
+      <img src="/img/host3.webp" alt="Festivalgæst sidder på halmballer" />
+    </div>
+
+    <div class="imgleft">
+      <img src="/img/host4.webp" alt="Festivalgæster smiler" />
+    </div>
+
+    <div class="textright">
+      <p>Der kommer <strong>mindst 12 bands</strong> på årets festival.</p>
+      <p>Der kommer <strong>økologisk falafel og lokalbrygget gin.</strong></p>
+      <p>
+        Der er opbyggelig <strong>fællesspisning</strong> med nedbrydeligt
+        bestik under kulørte lamper.
+      </p>
+      <p>Det er <strong>havudsigt, stjernehimmel</strong> og træk-og-slip.</p>
+    </div>
+
+    <div class="textleft">
+      <p>
+        <strong>Du kan gøre, hvad du vil på Høst Møn</strong> – med eller uden
+        børn og søvn.
+      </p>
+      <p>
+        Omgivelserne er trygge, og rammerne er vide, og hvis du vil bade om
+        natten og drikke om morgenen, så kan du gøre det.
+      </p>
+      <p>
+        Så længe du ikke snakker foran scenen, når musikken spiller.
+      </p>
+    </div>
+
+    <div class="imgright">
+      <img src="/img/host5.webp" alt="Festivalgæster tæt sammen" />
+    </div>
+  </div>
+</section>
+
+ </Layout>
+
+ <style>
+  .om-host {
+  padding: 8rem 2rem 5rem;
+}
+
+.hero-title {
+  max-width: 1200px;
+  padding: 11rem 2rem 5rem;
+  font-size: 2rem;
+  text-align: right;
+  margin: 0 0 6rem auto;
+}
+
+.info {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 2rem;
+  row-gap: 6rem;
+  align-items: center;
+}
+.textleft,
+.textright {
+  color: #3a342f;
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 520px;
+}
+
+.textleft p,
+.textright p {
+  margin: 0 0 0.8rem;
+}
+
+.textleft {
+  justify-self: end;
+  text-align: right;
+  max-width: 500px;
+}
+
+.textright {
+  justify-self: start;
+  text-align: left;
+  max-width: 500px;
+}
+
+.imgleft,
+.imgright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgleft {
+  justify-self: start;
+}
+
+.imgright {
+  justify-self: end;
+}
+
+.imgleft img,
+.imgright img {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .om-host {
+    padding: 6rem 1.25rem 4rem;
+  }
+
+  .hero-title {
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .hero-title h1 {
+    text-align: center;
+  }
+
+  .info {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .textleft,
+  .textright,
+  .imgleft,
+  .imgright {
+    justify-self: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .imgleft img,
+  .imgright img {
+    width: 260px;
+    height: 260px;
+  }
+}
+ </style>
