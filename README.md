@@ -40,8 +40,6 @@ Hoest_Moen/
 │   │   ├── program.astro
 │   ├── styles/
 │   │   ├── Global.css
-│   ├── js/
-│   │   ├── menu.js
 ├── .evn
 ├── .gitignore
 └── README.md
@@ -62,10 +60,6 @@ Hoest_Moen/
 ### Alle CSS filer:
 
 - Global.css - Fælles design for alle sider.
-
-### Alle JavaScript filer:
-
-- menu.js - Interaktivitet af menuen.
 
 ## Sådan fungerer koden:
 
