@@ -9,11 +9,6 @@ import Kunstnere from "../components/Cards.astro";
 const url = `${import.meta.env.SUPABASE_URL}/rest/v1/Kunstnere?select=*`;
 const apiKey = import.meta.env.SUPABASE_PUBLISHABLE_KEY;
 
-const days = [
-  { title: "Fredag 28/04", content: "" },
-  { title: "Lørdag 29/04", content: "" },
-];
-
 const options = {
   headers: {
     apikey: apiKey,
@@ -23,6 +18,11 @@ const options = {
 const data = await fetch(url, options).then((res) => res.json());
 
 console.log(data);
+
+const days = [
+  { title: "Fredag 28/04", content: "" },
+  { title: "Lørdag 29/04", content: "" },
+];
 ---
 
 <Layout>
@@ -33,14 +33,17 @@ console.log(data);
     {
       days.map((day, index) => (
         <div class="item" id={`item-${index}`}>
-          <button onclick={`toggle(${index})`}>
+          <button>
             {day.title}
-            <span>
-              {" "}
+            <span class="arrow">
               <img src="img/nede.svg" alt="pil ned" />{" "}
             </span>
           </button>
-          <div class="content">{day.content}</div>
+          <div class="content">
+            {data.map((kunstnere: any, index: number) => (
+              <Kunstnere kunstnere={{ ...kunstnere, reverse: index % 2 !== 0 }} />
+            ))}
+          </div>
         </div>
       ))
     }
@@ -51,11 +54,16 @@ console.log(data);
       const el = document.getElementById(`item-${index}`);
       if (el) {
         el.classList.toggle("open");
+        console.log(el.classList);
       }
     }
+
+    document.querySelectorAll(".item button").forEach((btn, index) => {
+      btn.addEventListener("click", () => toggle(index));
+    });
   </script>
 
-  {data.map((kunstnere: any, index: number) => <Kunstnere kunstnere={{ ...kunstnere, reverse: index % 2! == 0 }} />)}
+  <!-- {data.map((kunstnere: any, index: number) => <Kunstnere kunstnere={{ ...kunstnere, reverse: index % 2! == 0 }} />)} -->
 </Layout>
 
 <style>
@@ -92,13 +100,21 @@ console.log(data);
 
   .content {
     padding: 1rem;
-    display: flex;
+    display: none;
     justify-content: space-between;
     width: 100%;
   }
 
   .item.open .content {
     display: block;
+  }
+
+  .arrow {
+    transition: ease-in-out 0.2s;
+  }
+
+  .item.open .arrow {
+    transform: rotate(0.5turn);
   }
 
   .HeroProgram {
