@@ -10,10 +10,17 @@ const { title, footerClass } = Astro.props;
     <meta name="robots" content="noindex" />
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <title>{title}</title>
   </head>
   <body>
     <header>
+      <button class="burger" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
       <nav>
         <ul class="menu">
           <li><a href="/"> <img src="/Logo.webp" alt="logo" /></a></li>
@@ -72,6 +79,7 @@ const { title, footerClass } = Astro.props;
     color: var(--color-accent);
     padding: 0.4rem 0.6rem;
   }
+  
 
   .menu {
     display: flex;
@@ -81,9 +89,9 @@ const { title, footerClass } = Astro.props;
   }
 
   .menu li a:hover {
-    font-size: x-large;
+    display: inline-block;
+    scale: 1.2;
     text-decoration: underline;
-    padding: 0.4rem 0.6rem;
   }
 
   .menu li {
@@ -115,8 +123,9 @@ const { title, footerClass } = Astro.props;
   }
 
   .dropdown-menu li a:hover {
-    font-size: x-large;
+    scale: 1.2;
     text-decoration: underline;
+    background-color: var(--color-lightgreen);
   }
 
   .dropdown:hover .dropdown-menu {
@@ -131,6 +140,78 @@ const { title, footerClass } = Astro.props;
     padding: 0.4rem 0.6rem;
     display: inline-block;
   }
+
+/* Burger menu */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  z-index: 20;
+}
+
+.burger span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: var(--color-accent);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.burger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+.burger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-lightgreen);
+    padding-top: 4rem;
+    z-index: 15;
+  }
+
+  nav.active {
+    display: block;
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1rem;
+  }
+
+  /* Always show dropdown items flat */
+  .dropdown-menu {
+    position: static;
+    display: block;
+    background-color: transparent;
+    padding: 0;
+    min-width: unset;
+    text-align: center;
+  }
+}
 </style>
 
 <!-- Footer styling -->
@@ -162,3 +243,13 @@ const { title, footerClass } = Astro.props;
   background: linear-gradient(180deg,rgba(170, 217, 145, 1) 0%, rgba(236, 243, 215, 1) 100%);
 }
 </style>
+
+<script>
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector("nav");
+
+  burger.addEventListener("click", () => {
+    burger.classList.toggle("active");
+    nav.classList.toggle("active");
+  });
+</script>
